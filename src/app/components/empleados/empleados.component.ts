@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+
+import { Empleado } from 'src/app/models/empleado';
 
 @Component({
   selector: 'app-empleados',
@@ -6,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class EmpleadosComponent implements OnInit {
-  empleados = [
+  empleados: Observable<Array<Empleado>> = of(  [
     {
       nombre: 'Julio Pérez',
       cargo: 'Director',
-      email: 'juliolpj@hotmail.com'
+      email: 'juliolpj@hotmail.com',
+      id: '1'
+    },
+    {
+      nombre: 'Gabriela Pérez',
+      cargo: 'Directora de proyectos',
+      email: 'gabrielaaperezr@gmail.com',
+      id: '2'
     }
-  ];
+  ]);
 
   constructor() { }
 
@@ -26,11 +36,11 @@ export class EmpleadosComponent implements OnInit {
     
   }
 
-  eliminar(i: number) {
-    console.log('Eliminar', i);
+  eliminar(id: string) {
+    console.log('Eliminar', id);
   }
 
-  seleccionar(i: number) {
-    console.log('Seleccionar', i);
+  seleccionar(id: string) {
+    console.log('Seleccionar', id);
   }
 }

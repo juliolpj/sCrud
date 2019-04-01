@@ -18,12 +18,12 @@
     </thead>
       
     <tbody>
-      <tr *ngFor="let empleado of empleados, let i = index">
-        <td (click)="seleccionar($event)"> {{ empleado.nombre }} </td>
-        <td (click)="seleccionar(2)"> {{ empleado.cargo }} </td>
-        <td (click)="seleccionar(2)"> {{ empleado.email }} </td>
+      <tr *ngFor="let empleado of empleados | async, let i = index">
+        <td (click)="seleccionar(empleado.id)"> {{ empleado.nombre }} </td>
+        <td (click)="seleccionar(empleado.id)"> {{ empleado.cargo }} </td>
+        <td (click)="seleccionar(empleado.id)"> {{ empleado.email }} </td>
         <td>
-          <a (click)="eliminar(1)" class="text-danger ml-auto">
+          <a (click)="eliminar(empleado.id)" class="text-danger ml-auto">
             <i class="fa fa-minus-circle fa-2x"></i>
           </a>
         </td>
