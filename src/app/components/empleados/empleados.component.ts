@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable  } from 'rxjs';
 
 import { Empleado } from 'src/app/models/empleado';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-empleados',
@@ -9,31 +10,18 @@ import { Empleado } from 'src/app/models/empleado';
   styles: []
 })
 export class EmpleadosComponent implements OnInit {
-  empleados: Observable<Array<Empleado>> = of(  [
-    {
-      nombre: 'Julio Pérez',
-      cargo: 'Director',
-      email: 'juliolpj@hotmail.com',
-      id: '1'
-    },
-    {
-      nombre: 'Gabriela Pérez',
-      cargo: 'Directora de proyectos',
-      email: 'gabrielaaperezr@gmail.com',
-      id: '2'
-    }
-  ]);
+  empleados: Observable<Array<Empleado>>;
 
-  constructor() { }
+  constructor(public data: DataService) {
+  }
 
   ngOnInit() {
-    console.log(this.empleados);
+    this.empleados = this.data.getRecords();
     
   }
 
   agregar() {
     console.log('Pulsó el botón agregar');
-    
   }
 
   eliminar(id: string) {

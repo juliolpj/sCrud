@@ -12,6 +12,8 @@ import { ReadmeComponent } from './components/readme/readme.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 
+import { DataService } from './services/data.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
     MarkdownModule.forRoot({ loader: HttpClient })
   ],
   providers: [
-    HttpClient 
+    HttpClient, DataService
   ],
   bootstrap: [AppComponent]
 })
