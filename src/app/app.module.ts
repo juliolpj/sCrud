@@ -10,7 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReadmeComponent } from './components/readme/readme.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
     HomeComponent,
     ReadmeComponent,
     NotFoundComponent,
-    UsuariosComponent
+    EmpleadosComponent
   ],
   imports: [
     BrowserModule,
