@@ -13,17 +13,17 @@
         <th>Nombre</th>
         <th>Cargo</th>
         <th>Email</th>
-        <th>Actions</th>
+        <th> </th>
       </tr>
     </thead>
       
     <tbody>
-      <tr >
-        <td (click)="seleccionar(i)"> Julio Pérez </td>
-        <td (click)="seleccionar(i)"> Director </td>
-        <td (click)="seleccionar(i)"> juliolp@hotmail.com</td>
+      <tr *ngFor="let empleado of empleados, let i = index">
+        <td (click)="seleccionar($event)"> {{ empleado.nombre }} </td>
+        <td (click)="seleccionar(2)"> {{ empleado.cargo }} </td>
+        <td (click)="seleccionar(2)"> {{ empleado.email }} </td>
         <td>
-          <a (click)="eliminar(i)" class="text-danger">
+          <a (click)="eliminar(1)" class="text-danger ml-auto">
             <i class="fa fa-minus-circle fa-2x"></i>
           </a>
         </td>
