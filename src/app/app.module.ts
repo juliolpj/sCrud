@@ -13,6 +13,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 
 import { DataService } from './services/data.service';
+import { FormularioComponent } from './components/empleados/formulario/formulario.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DataService } from './services/data.service';
     HomeComponent,
     ReadmeComponent,
     NotFoundComponent,
-    EmpleadosComponent
+    EmpleadosComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,

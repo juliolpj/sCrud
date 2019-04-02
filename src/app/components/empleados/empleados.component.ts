@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
   styles: []
 })
 export class EmpleadosComponent implements OnInit {
+  frmStatus = 'Consultar';
   empleados: Observable<Array<Empleado>>;
 
   constructor(public data: DataService) {
@@ -21,7 +22,7 @@ export class EmpleadosComponent implements OnInit {
   }
 
   agregar() {
-    console.log('Pulsó el botón agregar');
+    this.frmStatus = 'Agregar';
   }
 
   eliminar(id: string) {

@@ -1,4 +1,8 @@
-<div class="card mt-3">
+<app-formulario
+  [frmStatus]="frmStatus"
+></app-formulario>
+
+<div [hidden]="frmStatus != 'Consultar'" class="card mt-3">
   <div class="card-header d-flex">
       Empleados
       <a (click)="agregar()" class="text-primary ml-auto">
@@ -7,7 +11,7 @@
   </div>
 </div>
 
-<table class="table table-bordered table-hover">
+<table [hidden]="frmStatus != 'Consultar'" class="table table-bordered table-hover">
     <thead>
       <tr>
         <th>Nombre</th>
