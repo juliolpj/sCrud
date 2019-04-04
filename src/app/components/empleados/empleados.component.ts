@@ -13,13 +13,19 @@ import { filter, tap, map, flatMap } from 'rxjs/operators';
 export class EmpleadosComponent implements OnInit {
   frmStatus = 'Consultar';
   registro: Empleado = {};
-  empleados: Observable<Array<Empleado>>;
+  empleados: Array<Empleado>;
 
-  constructor(public data: DataService) {
+  constructor(public dataService: DataService) {
   }
 
   ngOnInit() {
-    this.empleados = this.data.getRecords$();
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.dataService.getRecords$().subscribe(
+      (data: Empleado[]) => this.empleados = data
+    );
   }
 
   agregar() {
@@ -40,22 +46,31 @@ export class EmpleadosComponent implements OnInit {
     this.frmStatus = mensaje;
   }
 
-  recibirAceptar(objeto) {
+  recibirAceptar(empleado: Empleado) {
     switch (this.frmStatus) {
+      case 'Agregar':
+        console.log('Agregar');
       case 'Modificar':
           console.log('Modificar');
         break;
-      case 'Agregar':
-        console.log('Agregar');
+      case 'Eliminar':
+        this.aceptarEliminarRegistro(empleado);
       break;
     }
     this.frmStatus = 'Consultar';
-    console.log('Recibir aceptar', objeto);
+    console.log('Recibir aceptar', empleado);
   }
 
   guardarModificaciones(objeto) {
     this.registro = objeto;
 
+  }
+
+  aceptarEliminarRegistro(empleado: Empleado) {
+    this.dataService.deleteRecord(empleado).subscribe(
+      () => this.fetchData(),
+      error => alert('** Error al eliminar los datos: ' + error.statusText + ' **')
+    )
   }
 
 }

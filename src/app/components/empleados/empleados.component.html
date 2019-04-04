@@ -26,7 +26,7 @@
     </thead>
       
     <tbody>
-      <tr *ngFor="let empleado of empleados | async">
+      <tr *ngFor="let empleado of empleados">
         <td (click)="seleccionar(empleado)"> {{ empleado.nombre }} </td>
         <td (click)="seleccionar(empleado)"> {{ empleado.cargo }} </td>
         <td (click)="seleccionar(empleado)"> {{ empleado.email }} </td>

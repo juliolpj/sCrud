@@ -6,24 +6,27 @@
   <div class="card-body">
     <form #miForm="ngForm" class="form-horizontal mt-3">
       <div class="form-group">
-        <label for="nombre" class="control-label">
-          Nombre
-        </label>
-        <input #name="ngModel" [(ngModel)]="registro.nombre" type="text" name="nombre" class="form-control" />
+        <label for="nombre" class="control-label"> Nombre </label>
+        <input 
+          [readonly]="frmStatus==='Eliminar'"
+          #name="ngModel" [(ngModel)]="registro.nombre" 
+          type="text" name="nombre" class="form-control" />
       </div>
 
       <div class="form-group">
-        <label for="cargo" class="control-label">
-          Cargo
-        </label>
-        <input #name="ngModel" [(ngModel)]="registro.cargo" type="text" name="cargo" class="form-control" />
+        <label for="cargo" class="control-label"> Cargo </label>
+        <input 
+          [readonly]="frmStatus==='Eliminar'"
+          #name="ngModel" [(ngModel)]="registro.cargo" 
+          type="text" name="cargo" class="form-control" />
       </div>
 
       <div class="form-group">
-        <label for="email" class="control-label">
-          Email
-        </label>
-        <input #name="ngModel" [(ngModel)]="registro.email" type="email" name="email" class="form-control" />
+        <label for="email" class="control-label"> Email </label>
+        <input 
+          [readonly]="frmStatus==='Eliminar'"
+          #name="ngModel" [(ngModel)]="registro.email" 
+          type="email" name="email" class="form-control" />
       </div>
 
       <div class="row">

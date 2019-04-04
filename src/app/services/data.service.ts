@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -13,8 +13,8 @@ const apiURL = environment.apiURL  + '/empleados';
   providedIn: 'root'
 })
 export class DataService {
-  empleados: Observable<Array<Empleado>>;
-
+  headers: HttpHeaders = new HttpHeaders( { 'Content-Type': 'application-json'});
+  
   constructor(private http: HttpClient) {
   }
 
@@ -23,6 +23,10 @@ export class DataService {
       .pipe(
         catchError(this.ErrorHandle)
       );
+  }
+
+  deleteRecord(empleado: Empleado) {
+    return this.http.delete(apiURL + '/' + empleado.id, {headers: this.headers})
   }
 
   ErrorHandle(error: HttpErrorResponse) {
