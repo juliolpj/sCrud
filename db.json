@@ -1,0 +1,58 @@
+{
+  "empleados": [
+    {
+      "id": "1",
+      "nombre": "Fazt",
+      "cargo": "manager",
+      "email": "fazt@email.com"
+    },
+    {
+      "id": "2",
+      "nombre": "Juan",
+      "cargo": "Diseñador",
+      "email": "juan@email.com"
+    },
+    {
+      "id": "3",
+      "nombre": "Pedro",
+      "cargo": "Programmer",
+      "email": "pedro@email.com"
+    },
+    {
+      "nombre": "nom uno",
+      "cargo": "Aprendiz",
+      "email": "uno@email.com",
+      "id": "CThgAFb"
+    },
+    {
+      "nombre": "Big Boss",
+      "cargo": "Jefe",
+      "email": "jefe@email.com",
+      "id": "LPaXMqd"
+    },
+    {
+      "nombre": "4",
+      "cargo": "4",
+      "email": "4",
+      "id": "DZ0c3EK"
+    },
+    {
+      "nombre": "5",
+      "cargo": "5",
+      "email": "5",
+      "id": "L5quNm4"
+    },
+    {
+      "nombre": "nuevo",
+      "cargo": "Jefe",
+      "email": "email@email.com",
+      "id": "TDg7NJ9"
+    },
+    {
+      "nombre": "dos",
+      "cargo": "Jefe",
+      "email": "fazt@email.com",
+      "id": "KMzjnXK"
+    }
+  ]
+}
