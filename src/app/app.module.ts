@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -12,7 +13,6 @@ import { ReadmeComponent } from './components/readme/readme.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 
-import { DataService } from './services/data.service';
 import { FormularioComponent } from './components/empleados/formulario/formulario.component';
 
 
@@ -29,11 +29,12 @@ import { FormularioComponent } from './components/empleados/formulario/formulari
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient })
   ],
   providers: [
-    HttpClient, DataService
+    //HttpClient, DataService
   ],
   bootstrap: [AppComponent]
 })

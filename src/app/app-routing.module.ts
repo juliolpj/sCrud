@@ -6,7 +6,8 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
   { path: 'readme', component: ReadmeComponent },
   { path: 'empleados', component: EmpleadosComponent },
   { path: '**', component: NotFoundComponent}

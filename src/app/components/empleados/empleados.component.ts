@@ -11,6 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class EmpleadosComponent implements OnInit {
   frmStatus = 'Consultar';
+  registro: Empleado = {};
   empleados: Observable<Array<Empleado>>;
 
   constructor(public data: DataService) {
@@ -29,7 +30,37 @@ export class EmpleadosComponent implements OnInit {
     console.log('Eliminar', id);
   }
 
-  seleccionar(id: string) {
-    console.log('Seleccionar', id);
+  seleccionar(empleado: Empleado) {
+    this.registro = {
+      nombre: empleado.nombre, 
+      cargo: empleado.cargo, 
+      email: empleado.email 
+    };
+    /* this.registro = Object.assign({}, empleado);
+    console.log(this.registro);*/
+    this.frmStatus = 'Modificar'; 
   }
+
+  recibirCancelar(mensaje: string) {
+    this.frmStatus = mensaje;
+  }
+
+  recibirAceptar(objeto) {
+    switch (this.frmStatus) {
+      case 'Modificar':
+          console.log('Modificar');
+        break;
+      case 'Agregar':
+        console.log('Agregar');
+      break;
+    }
+    this.frmStatus = 'Consultar';
+    console.log('Recibir aceptar', objeto);
+  }
+
+  guardarModificaciones(objeto) {
+    this.registro = objeto;
+
+  }
+
 }

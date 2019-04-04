@@ -1,5 +1,9 @@
+
 <app-formulario
   [frmStatus]="frmStatus"
+  [registro]="registro"
+  (botonCancelar)="recibirCancelar($event)"
+  (botonAceptar)="recibirAceptar($event)"
 ></app-formulario>
 
 <div [hidden]="frmStatus != 'Consultar'" class="card mt-3">
@@ -23,9 +27,9 @@
       
     <tbody>
       <tr *ngFor="let empleado of empleados | async">
-        <td (click)="seleccionar(empleado.id)"> {{ empleado.nombre }} </td>
-        <td (click)="seleccionar(empleado.id)"> {{ empleado.cargo }} </td>
-        <td (click)="seleccionar(empleado.id)"> {{ empleado.email }} </td>
+        <td (click)="seleccionar(empleado)"> {{ empleado.nombre }} </td>
+        <td (click)="seleccionar(empleado)"> {{ empleado.cargo }} </td>
+        <td (click)="seleccionar(empleado)"> {{ empleado.email }} </td>
         <td>
           <a (click)="eliminar(empleado.id)" class="text-danger ml-auto">
             <i class="fa fa-minus-circle fa-2x"></i>
@@ -35,3 +39,8 @@
     </tbody>
 
   </table>
+
+  <div class="sticky-top alert alert-warning alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ frmStatus }}
+  </div>
