@@ -29,17 +29,18 @@ export class EmpleadosComponent implements OnInit {
   }
 
   agregar() {
+    this.registro = {};
     this.frmStatus = 'Agregar';
   }
 
+  modificar(empleado: Empleado) {
+    this.registro = Object.assign({}, empleado);
+    this.frmStatus = 'Modificar'; 
+  }
+  
   eliminar(empleado: Empleado) {
     this.registro = Object.assign({}, empleado);
     this.frmStatus = 'Eliminar';
-  }
-
-  seleccionar(empleado: Empleado) {
-    this.registro = Object.assign({}, empleado);
-    this.frmStatus = 'Modificar'; 
   }
 
   recibirCancelar(mensaje: string) {
@@ -49,27 +50,47 @@ export class EmpleadosComponent implements OnInit {
   recibirAceptar(empleado: Empleado) {
     switch (this.frmStatus) {
       case 'Agregar':
-        console.log('Agregar');
+        this.aceptarAgregarRegistro(empleado);
+        break;
       case 'Modificar':
-          console.log('Modificar');
+        this.aceptarModificarRegistro(empleado);
         break;
       case 'Eliminar':
         this.aceptarEliminarRegistro(empleado);
       break;
     }
-    this.frmStatus = 'Consultar';
-    console.log('Recibir aceptar', empleado);
   }
 
-  guardarModificaciones(objeto) {
-    this.registro = objeto;
+  aceptarAgregarRegistro(empleado: Empleado) {
+    this.dataService.addRecord$(empleado).subscribe(
+      data => {
+        console.log(data);
+        this.fetchData();
+      },
+      error => {
+        alert('** Error al agregar los datos: ' + error.statusText + ' **');
+        console.log(error);
+      },
+      () => this.frmStatus = 'Consultar'
+    )
+  }
 
+  aceptarModificarRegistro(empleado: Empleado) {
+    this.dataService.updateRecord$(empleado).subscribe(
+      data => {
+        console.log(data);
+        this.fetchData();
+      },
+      error => alert('** Error al modificar los datos: ' + error.statusText + ' **'),
+      () => this.frmStatus = 'Consultar'
+    )
   }
 
   aceptarEliminarRegistro(empleado: Empleado) {
-    this.dataService.deleteRecord(empleado).subscribe(
+    this.dataService.deleteRecord$(empleado).subscribe(
       () => this.fetchData(),
-      error => alert('** Error al eliminar los datos: ' + error.statusText + ' **')
+      error => alert('** Error al eliminar los datos: ' + error.statusText + ' **'),
+      () => this.frmStatus = 'Consultar'
     )
   }
 

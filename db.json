@@ -3,7 +3,7 @@
     {
       "id": "1",
       "nombre": "Fazt",
-      "cargo": "manager",
+      "cargo": "manager1",
       "email": "fazt@email.com"
     },
     {
@@ -19,16 +19,10 @@
       "email": "pedro@email.com"
     },
     {
-      "nombre": "nom uno",
-      "cargo": "Aprendiz",
-      "email": "uno@email.com",
-      "id": "CThgAFb"
-    },
-    {
-      "nombre": "Big Boss",
+      "nombre": "nombre",
       "cargo": "Jefe",
-      "email": "jefe@email.com",
-      "id": "LPaXMqd"
+      "email": "test2@mail.com",
+      "id": "CThgAFb"
     },
     {
       "nombre": "nuevo",
@@ -37,10 +31,28 @@
       "id": "TDg7NJ9"
     },
     {
-      "nombre": "dos",
-      "cargo": "Jefe",
-      "email": "fazt@email.com",
+      "nombre": "tres",
+      "cargo": "tres",
+      "email": "tres@email.com",
       "id": "KMzjnXK"
+    },
+    {
+      "nombre": "Nombre",
+      "cargo": "cargo",
+      "email": "email",
+      "id": "YZiRnig"
+    },
+    {
+      "nombre": "nom",
+      "cargo": "car",
+      "email": "ema",
+      "id": "Lm_jvkR"
+    },
+    {
+      "nombre": "diez",
+      "cargo": "cdiez",
+      "email": "ediez",
+      "id": "VGqP_KV"
     }
   ]
 }

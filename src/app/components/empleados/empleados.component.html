@@ -27,9 +27,9 @@
       
     <tbody>
       <tr *ngFor="let empleado of empleados">
-        <td (click)="seleccionar(empleado)"> {{ empleado.nombre }} </td>
-        <td (click)="seleccionar(empleado)"> {{ empleado.cargo }} </td>
-        <td (click)="seleccionar(empleado)"> {{ empleado.email }} </td>
+        <td (click)="modificar(empleado)"> {{ empleado.nombre }} </td>
+        <td (click)="modificar(empleado)"> {{ empleado.cargo }} </td>
+        <td (click)="modificar(empleado)"> {{ empleado.email }} </td>
         <td>
           <a (click)="eliminar(empleado)" class="text-danger ml-auto">
             <i class="fa fa-minus-circle fa-2x"></i>

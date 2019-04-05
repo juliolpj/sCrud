@@ -13,7 +13,7 @@ const apiURL = environment.apiURL  + '/empleados';
   providedIn: 'root'
 })
 export class DataService {
-  headers: HttpHeaders = new HttpHeaders( { 'Content-Type': 'application-json'});
+  headers: HttpHeaders = new HttpHeaders( { 'Content-Type': 'application/json'});
   
   constructor(private http: HttpClient) {
   }
@@ -25,7 +25,18 @@ export class DataService {
       );
   }
 
-  deleteRecord(empleado: Empleado) {
+  
+  addRecord$(empleado: Empleado) {
+    return this.http.post(apiURL, empleado);
+  }
+  
+  updateRecord$(empleado: Empleado) {
+    console.log(empleado);
+    return this.http
+    .put(apiURL + '/' + empleado.id, JSON.stringify(empleado), {headers: this.headers});
+  }
+  
+  deleteRecord$(empleado: Empleado) {
     return this.http.delete(apiURL + '/' + empleado.id, {headers: this.headers})
   }
 
