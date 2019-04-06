@@ -8,30 +8,39 @@
       <div class="form-group">
         <label for="nombre" class="control-label"> Nombre </label>
         <input 
+          required maxlength="40" minlength="8" [class.is-invalid]="nombre.invalid && nombre.touched"
           [readonly]="frmStatus==='Eliminar'"
-          #name="ngModel" [(ngModel)]="registro.nombre" 
+          #nombre="ngModel" [(ngModel)]="registro.nombre" 
           type="text" name="nombre" class="form-control" />
-      </div>
-
-      <div class="form-group">
-        <label for="cargo" class="control-label"> Cargo </label>
-        <input 
+          <small class="text-danger" [class.d-none]="nombre.untouched || !nombre.hasError('required')">El nombre es requerido</small>
+          <small class="text-danger" [class.d-none]="nombre.untouched || !nombre.hasError('minlength')">La longitud mínima es 8</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="cargo" class="control-label"> Cargo </label>
+          <input 
+          required maxlength="40" [class.is-invalid]="cargo.invalid && cargo.touched"
           [readonly]="frmStatus==='Eliminar'"
-          #name="ngModel" [(ngModel)]="registro.cargo" 
+          #cargo="ngModel" [(ngModel)]="registro.cargo" 
           type="text" name="cargo" class="form-control" />
+          <small class="text-danger" [class.d-none]="cargo.valid || cargo.untouched">El cargo es requerido</small>
       </div>
 
       <div class="form-group">
         <label for="email" class="control-label"> Email </label>
         <input 
+          required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" 
+          [class.is-invalid]="email.invalid && email.touched"
           [readonly]="frmStatus==='Eliminar'"
-          #name="ngModel" [(ngModel)]="registro.email" 
+          #email="ngModel" [(ngModel)]="registro.email" 
           type="email" name="email" class="form-control" />
+          <small class="text-danger" [class.d-none]="email.untouched || !email.hasError('required') ">El email es requerido</small>
+          <small class="text-danger" [class.d-none]="email.untouched || !email.hasError('pattern') ">No es en un email valido</small>
       </div>
 
       <div class="row">
         <div class="offset-sm-3 col-sm-3">
-          <button type="button" class="btn btn-primary btn-block" (click)="aceptar()" >
+          <button [disabled]="miForm.form.invalid" type="button" class="btn btn-primary btn-block" (click)="aceptar()" >
             Aceptar
           </button>
         </div>

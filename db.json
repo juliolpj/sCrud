@@ -19,9 +19,9 @@
       "email": "pedro@email.com"
     },
     {
-      "nombre": "nombre",
-      "cargo": "Jefe",
-      "email": "test2@mail.com",
+      "nombre": "Julio E. Pérez R.",
+      "cargo": "Diseñador gráfico",
+      "email": "jepr@mail.com",
       "id": "CThgAFb"
     },
     {
@@ -53,6 +53,12 @@
       "cargo": "cdiez",
       "email": "ediez",
       "id": "VGqP_KV"
+    },
+    {
+      "nombre": "Julio Pérez",
+      "cargo": "Director",
+      "email": "juliolpj@hotmail.com",
+      "id": "ZL2qnE_"
     }
   ]
 }

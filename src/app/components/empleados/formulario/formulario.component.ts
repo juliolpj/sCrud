@@ -18,14 +18,6 @@ export class FormularioComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngOnChanges() {
-    /*  
-    console.log('registro', this.registro);
-    console.log('frmRegistro', this.frmRegistro)
-    this.registro = this.frmRegistro;
-    console.log('registro', this.registro); */
-  }
-
   aceptar() {
     this.botonAceptar.emit(this.registro);
   }
