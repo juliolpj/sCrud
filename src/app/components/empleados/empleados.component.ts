@@ -16,7 +16,7 @@ export class EmpleadosComponent implements OnInit {
   registro: Empleado = {};
   empleados: Array<Empleado>;
 
-  constructor(public dataService: DataService, private mensajeService: MensajesService) {
+  constructor(public dataService: DataService, private msgService: MensajesService) {
   }
 
   ngOnInit() {
@@ -34,19 +34,19 @@ export class EmpleadosComponent implements OnInit {
 
   agregar() {
     this.registro = {};
-    this.mensajeService.emitChange('');
+    this.msgService.sendMessage('');
     this.frmStatus = 'Agregar';
   }
 
   modificar(empleado: Empleado) {
     this.registro = Object.assign({}, empleado);
-    this.mensajeService.emitChange('');
+    this.msgService.sendMessage('');
     this.frmStatus = 'Modificar'; 
   }
   
   eliminar(empleado: Empleado) {
     this.registro = Object.assign({}, empleado);
-    this.mensajeService.emitChange('');
+    this.msgService.sendMessage('');
     this.frmStatus = 'Eliminar';
   }
 
@@ -71,11 +71,11 @@ export class EmpleadosComponent implements OnInit {
   aceptarAgregarRegistro(empleado: Empleado) {
     this.dataService.addRecord$(empleado).subscribe(
       data => {
-        this.mensajeService.emitChange('Registro agregado satisfactoriamente');
+        this.msgService.sendMessage('Registro agregado satisfactoriamente');
         this.fetchData();
       },
       error => {
-        this.mensajeService.emitChange('** Error al agregar los datos: ' + error.statusText + ' **');
+        this.msgService.sendMessage('Error al agregar los datos: ' + error.statusText, 'alert-danger');
         console.log(error);
       },
       () => this.frmStatus = 'Consultar'
@@ -85,10 +85,10 @@ export class EmpleadosComponent implements OnInit {
   aceptarModificarRegistro(empleado: Empleado) {
     this.dataService.updateRecord$(empleado).subscribe(
       data => {
-        this.mensajeService.emitChange('Registro actualizado satisfactoriamente');
+        this.msgService.sendMessage('Registro actualizado satisfactoriamente');
         this.fetchData();
       },
-      error => this.mensajeService.emitChange('** Error al actualizar los registro: ' + error.statusText + ' **'),
+      error => this.msgService.sendMessage('Error al actualizar los registro: ' + error.statusText, 'alert-danger'),
       () => this.frmStatus = 'Consultar'
     )
   }
@@ -96,10 +96,10 @@ export class EmpleadosComponent implements OnInit {
   aceptarEliminarRegistro(empleado: Empleado) {
     this.dataService.deleteRecord$(empleado).subscribe(
       () => {
-        this.mensajeService.emitChange('Registro eliminado satisfactoriamente');
+        this.msgService.sendMessage('Registro eliminado satisfactoriamente');
         this.fetchData()
       },
-      error => this.mensajeService.emitChange('** Error al eliminar el registro: ' + error.statusText + ' **'),
+      error => this.msgService.sendMessage('Error al eliminar el registro: ' + error.statusText, 'alert-danger'),
       () => this.frmStatus = 'Consultar'
     )
   }

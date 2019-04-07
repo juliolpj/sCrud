@@ -8,10 +8,14 @@ import { MensajesService } from 'src/app/services/mensajes.service';
 })
 export class MensajesComponent implements OnInit {
   msg: string;
+  tipo: string;
  
   constructor(private msgService: MensajesService) {
-    msgService.changeEmitted$.subscribe(
-      msg => this.msg = msg
+    msgService.getMessage().subscribe(
+      msg => {
+        this.msg = msg.text;
+        this.tipo = msg.tipo;
+      }
     )
   }
 
