@@ -1,0 +1,6 @@
+<div class="alert alert-success alert-dismissable mt-2" [class.alert-danger]="msg.charAt(0) === '*'" *ngIf="msg">
+  <button class="close" (click)="closeAlert()">
+    &times;
+  </button>
+  {{ msg }}
+</div>

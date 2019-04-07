@@ -4,6 +4,7 @@ import { Observable  } from 'rxjs';
 import { Empleado } from 'src/app/models/empleado';
 import { DataService } from 'src/app/services/data.service';
 import { filter, tap, map, flatMap } from 'rxjs/operators';
+import { MensajesService } from 'src/app/services/mensajes.service';
 
 @Component({
   selector: 'app-empleados',
@@ -15,7 +16,7 @@ export class EmpleadosComponent implements OnInit {
   registro: Empleado = {};
   empleados: Array<Empleado>;
 
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService, private mensajeService: MensajesService) {
   }
 
   ngOnInit() {
@@ -24,22 +25,28 @@ export class EmpleadosComponent implements OnInit {
 
   fetchData() {
     this.dataService.getRecords$().subscribe(
-      (data: Empleado[]) => this.empleados = data
+      (data: Empleado[]) => {
+        this.empleados = data;
+        this.registro = {};
+      }
     );
   }
 
   agregar() {
     this.registro = {};
+    this.mensajeService.emitChange('');
     this.frmStatus = 'Agregar';
   }
 
   modificar(empleado: Empleado) {
     this.registro = Object.assign({}, empleado);
+    this.mensajeService.emitChange('');
     this.frmStatus = 'Modificar'; 
   }
   
   eliminar(empleado: Empleado) {
     this.registro = Object.assign({}, empleado);
+    this.mensajeService.emitChange('');
     this.frmStatus = 'Eliminar';
   }
 
@@ -64,11 +71,11 @@ export class EmpleadosComponent implements OnInit {
   aceptarAgregarRegistro(empleado: Empleado) {
     this.dataService.addRecord$(empleado).subscribe(
       data => {
-        console.log(data);
+        this.mensajeService.emitChange('Registro agregado satisfactoriamente');
         this.fetchData();
       },
       error => {
-        alert('** Error al agregar los datos: ' + error.statusText + ' **');
+        this.mensajeService.emitChange('** Error al agregar los datos: ' + error.statusText + ' **');
         console.log(error);
       },
       () => this.frmStatus = 'Consultar'
@@ -78,18 +85,21 @@ export class EmpleadosComponent implements OnInit {
   aceptarModificarRegistro(empleado: Empleado) {
     this.dataService.updateRecord$(empleado).subscribe(
       data => {
-        console.log(data);
+        this.mensajeService.emitChange('Registro actualizado satisfactoriamente');
         this.fetchData();
       },
-      error => alert('** Error al modificar los datos: ' + error.statusText + ' **'),
+      error => this.mensajeService.emitChange('** Error al actualizar los registro: ' + error.statusText + ' **'),
       () => this.frmStatus = 'Consultar'
     )
   }
 
   aceptarEliminarRegistro(empleado: Empleado) {
     this.dataService.deleteRecord$(empleado).subscribe(
-      () => this.fetchData(),
-      error => alert('** Error al eliminar los datos: ' + error.statusText + ' **'),
+      () => {
+        this.mensajeService.emitChange('Registro eliminado satisfactoriamente');
+        this.fetchData()
+      },
+      error => this.mensajeService.emitChange('** Error al eliminar el registro: ' + error.statusText + ' **'),
       () => this.frmStatus = 'Consultar'
     )
   }

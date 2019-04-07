@@ -14,6 +14,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 
 import { FormularioComponent } from './components/empleados/formulario/formulario.component';
+import { MensajesComponent } from './components/mensajes/mensajes.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormularioComponent } from './components/empleados/formulario/formulari
     ReadmeComponent,
     NotFoundComponent,
     EmpleadosComponent,
-    FormularioComponent
+    FormularioComponent,
+    MensajesComponent
   ],
   imports: [
     BrowserModule,
