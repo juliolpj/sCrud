@@ -7,7 +7,8 @@ import { catchError } from 'rxjs/operators';
 import { Empleado } from '../models/empleado';
 import { environment } from '../../environments/environment';
 
-const apiURL = environment.apiURL  + '/empleados';
+//const apiURL = environment.apiURL  + '/empleados';
+const apiURL = 'api/empleados';
 
 @Injectable({
   providedIn: 'root'

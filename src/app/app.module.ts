@@ -16,6 +16,8 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { FormularioComponent } from './components/empleados/formulario/formulario.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MemoryService } from './services/memory.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { MensajesComponent } from './components/mensajes/mensajes.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MarkdownModule.forRoot({ loader: HttpClient })
+    MarkdownModule.forRoot({ loader: HttpClient }),
+    HttpClientInMemoryWebApiModule.forRoot(MemoryService, { dataEncapsulation: false })
   ],
   providers: [
     //HttpClient, DataService
