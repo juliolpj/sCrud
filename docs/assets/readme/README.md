@@ -4,9 +4,9 @@ CRUD sencillo en angular
 
 ## Poner en práctica conocimientos básicos en Angular
 
-- Mostrar interfaz de empleados (barra de navegación)
-- Poder acceder a la ventana de empleados
-- Mostrar la lista de empleados (contenido de la tabla)
+- Mostrar interfaz de usuario (barra de navegación)
+- Poder acceder a la ventana de usuarios
+- Mostrar la lista de usuarios (contenido de la tabla)
 - Poder (Incluir, Modificar, Eliminar Y Consultar registros)
 
 ## Refactorizar el código progresivamente
