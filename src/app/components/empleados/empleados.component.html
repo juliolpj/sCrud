@@ -18,9 +18,9 @@
 <table [hidden]="frmStatus != 'Consultar'" class="table table-bordered table-hover">
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Cargo</th>
-        <th>Email</th>
+        <th >Nombre</th>
+        <th >Cargo</th>
+        <th class="d-none d-md-block">Email</th>
         <th> </th>
       </tr>
     </thead>
@@ -29,7 +29,7 @@
       <tr *ngFor="let empleado of empleados">
         <td (click)="modificar(empleado)"> {{ empleado.nombre }} </td>
         <td (click)="modificar(empleado)"> {{ empleado.cargo }} </td>
-        <td (click)="modificar(empleado)"> {{ empleado.email }} </td>
+        <td class="d-none d-md-block" (click)="modificar(empleado)"> {{ empleado.email }} </td>
         <td>
           <a (click)="eliminar(empleado)" class="text-danger ml-auto">
             <i class="fa fa-minus-circle fa-2x"></i>

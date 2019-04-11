@@ -51,6 +51,7 @@ export class EmpleadosComponent implements OnInit {
   }
 
   recibirCancelar(mensaje: string) {
+    this.registro = {};
     this.frmStatus = mensaje;
   }
 
